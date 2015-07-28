@@ -1,10 +1,9 @@
-# Tietokantasovelluksen esittelysivu
+# MyBookDB -kirjatietokanta
 
 Yleisiä linkkejä:
-
-* [Linkki sovellukseeni](https://www.cs.helsinki.fi)
-* [Linkki dokumentaatiooni](https://www.github.com)
+* [Sovellus](http://samiahl.users.cs.helsinki.fi/mybookdb)
+* [Dokumentaatio](https://github.com/samiahl/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.md)
 
 ## Työn aihe
+MyBookDB auttaa käyttäjää pysymään kärryillä kirjojen kanssa, jotka omistaa, on lukenut, haluaa lukea yms.
 
-Laita tähän aihekuvaus tai [linkki valmiiseen aiheeseen](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Pokemon-kanta.html) 
