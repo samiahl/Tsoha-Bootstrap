@@ -10,4 +10,34 @@ Jos aikaa ja osaamista löytyy tarpeeksi, käyttäjät pääsevät jakamaan tois
 Sovelluksen toteutan kurssin PHP-ohjeiden mukaisesti tsoha-bootstrapia käyttäen.
 
 ## 2. Käyttötapaukset
+Käyttäjäryhmiä sovelluksessa on kirjautumaton ja kirjautunut käyttäjä sekä ylläpito. 
+
+```
+Kirjautumattoman käyttäjän käyttötapaukset
+
+Kirjan tai käyttäjän etsiminen ja tietojen lukeminen:
+Kuka tahansa voi selailla eri käyttäjien listoja tai etsiä kirjoja nimeltä ja nähdä kirjan arvostelut.
+
+Muita käyttötapauksia: rekisteröityminen 
+```
+
+```
+Kirjautuneen käyttäjän käyttötapaukset
+
+Kirjan lisääminen:
+Vain kirjautunut käyttäjä voi lisätä kirjan. Käyttäjä voi myös arvostella kirjan, antaa sille arvosanan tai/sekä lisätä sen listoihinsa tai merkata kirjan luetuksi.
+
+Listojen jakaminen:
+Käyttäjä voi jakaa/suositella kirjaa tai listaa toiselle käyttäjälle jos tietää tämän käyttäjätunnuksen.
+
+Muita käyttötapauksia: kirjautuminen
+```
+
+```
+Ylläpidon käyttötapaukset
+
+Kirjojen managerointi:
+Jos sama kirja lisätään enemmän kuin kerran, ylläpito voi poistaa kirjan.
+```
+
 
