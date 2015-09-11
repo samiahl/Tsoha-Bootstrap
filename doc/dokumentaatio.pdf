@@ -1,0 +1,39 @@
+MyBookDB Dokumentaatio
+
+1. Johdanto
+Koko ajan kuulee kirjoista, joita haluaisi lukea, mutta koska niitä ei kirjoita ylös niin kirja lopulta unohtuu. MyBookDB on käyttäjän omistamien, lukemien sekä lukuaikeissa olevien kirjojen tietokanta.
+Käyttäjä pystyy lisäämään kirjan tietokantaan ja valita sille erilaisia statuksia, kuten luettu, lukematon, omistuksessa, ei omistuksessa, lukulistalla yms. 
+Käyttäjä pystyy järjestämään kirjat genren tai arvostelun perusteella, luomaan top-listan luetuista ja lukemattomista kirjoista, hakemaan genren, arvosanan, kirjailijan tai kirjan nimellä.
+Käyttäjä pystyy myös kirjoittamaan kirjaan kuvauksen lisäksi omat huomionsa.
+Jos aikaa ja osaamista löytyy tarpeeksi, käyttäjät pääsevät jakamaan toisilleen esim. top-listansa ja näin suosittelemaan kirjoja.
+
+Sovelluksen toteutan kurssin PHP-ohjeiden mukaisesti tsoha-bootstrapia käyttäen.
+
+2. Käyttötapaukset
+Käyttäjäryhmiä sovelluksessa on kirjautumaton ja kirjautunut käyttäjä sekä ylläpito. 
+
+
+Kirjautumattoman käyttäjän käyttötapaukset
+
+Kirjan tai käyttäjän etsiminen ja tietojen lukeminen:
+Kuka tahansa voi selailla eri käyttäjien listoja tai etsiä kirjoja nimeltä ja nähdä kirjan arvostelut.
+
+Muita käyttötapauksia: rekisteröityminen 
+
+
+
+Kirjautuneen käyttäjän käyttötapaukset
+
+Kirjan lisääminen:
+Vain kirjautunut käyttäjä voi lisätä kirjan. Käyttäjä voi myös arvostella kirjan, antaa sille arvosanan tai/sekä lisätä sen listoihinsa tai merkata kirjan luetuksi.
+
+Listojen jakaminen:
+Käyttäjä voi jakaa/suositella kirjaa tai listaa toiselle käyttäjälle jos tietää tämän käyttäjätunnuksen.
+
+Muita käyttötapauksia: kirjautuminen
+
+
+Ylläpidon käyttötapaukset
+
+Kirjojen managerointi:
+Jos sama kirja lisätään enemmän kuin kerran, ylläpito voi poistaa kirjan.
