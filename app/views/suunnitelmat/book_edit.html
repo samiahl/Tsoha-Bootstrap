@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Kirjan Torakat muokkaus</h1>
+
+    <form>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox">
+                Luettu
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label>Nimi</label>
+            <input class="form-control" value="Torakat" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Kirjailija</label>
+            <input class="form-control" value="Jo Nesbo" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Kustantaja</label>
+            <input class="form-control" value="Bon" type="text">
+        </div>
+
+        <div>
+            <label>Julkaisuvuosi</label>
+            <input class="form-control" value="1998" type="text">
+        </div>
+
+        <div>
+            <label>Genre</label>
+            <input class="form-control" value="Dekkari" type="text">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Tallenna</button>
+        </div>
+    </form>
+
+{% endblock %}

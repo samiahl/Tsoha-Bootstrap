@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Rian Kirjasto</h1>
+
+    <p>
+        <a href="#" class="btn btn-success">Lisää kirja</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Kirjailija</th>
+                <th>Kustantamo</th>
+                <th>Julkaisuvuosi</th>
+                <th>Genre</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#">Torakat</a></td>
+                <td>Jo Nesbo</td>
+                <td>Bon</td>
+                <td>1998</td>
+                <td>Dekkari</td>
+                <td><label class="label label-success">Luettu</label></td>
+                <td><a class="btn btn-default btn-sm">Muokkaa</a></td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
