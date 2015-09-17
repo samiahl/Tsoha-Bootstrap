@@ -1,5 +1,7 @@
 <?php
 
+require 'app/models/book.php';
+
   class HelloWorldController extends BaseController{
 
       public static function index(){
@@ -10,7 +12,12 @@
 
       public static function sandbox(){
       // Testaa koodiasi täällä
-        View::make('helloworld.html');
+        //View::make('helloworld.html');
+          $torakat = Book::find(1);
+          $books = Book::all();
+
+          Kint::dump($books);
+          Kint::dump($torakat);
       }
 
       public static function book_edit(){

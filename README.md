@@ -2,7 +2,7 @@
 
 Yleisiä linkkejä:
 * [Sovellus](http://samiahl.users.cs.helsinki.fi/mybookdb)
-* [Dokumentaatio](https://github.com/samiahl/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.md)
+* [Dokumentaatio](https://github.com/samiahl/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
 Linkit toisen viikon staattisiin sivuihin:
 * [kirjalistaus](http://samiahl.users.cs.helsinki.fi/mybookdb/book)
