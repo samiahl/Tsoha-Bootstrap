@@ -7,7 +7,7 @@
  */
 class Book extends BaseModel{
 
-    public $book_id, $book_name, $writer, $publisher, $year, $genre;
+    public $id, $book_name, $writer, $publisher, $published, $genre;
 
     public function __construct($attributes){
         parent::__construct($attributes);
@@ -22,14 +22,15 @@ class Book extends BaseModel{
 
         foreach($rows as $row){
             $books[] = new Book(array(
-                'book_id' => $row['book_id'],
                 'book_name' => $row['book_name'],
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
-                'year' => $row['year'],
-                'genre' => $row['genre']
+                'published' => $row['published'],
+                'genre' => $row['genre'],
+                'status' => $row['status']
             ));
         }
+        return $books;
     }
 
     public static function find($id){
@@ -39,12 +40,12 @@ class Book extends BaseModel{
 
         if($row){
             $book = new Book(array(
-                'book_id' => $row['book_id'],
                 'book_name' => $row['book_name'],
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
-                'year' => $row['year'],
-                'genre' => $row['genre']
+                'published' => $row['published'],
+                'genre' => $row['genre'],
+                'status' => $row['status']
             ));
             return $book;
         }

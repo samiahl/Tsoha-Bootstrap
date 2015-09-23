@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>Rian kirjasto</h1>
+
+    <p>
+        <a href="{{base_path}}/book/new" class="btn btn-success">Lisää kirja</a>
+    </p>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nimi</th>
+                <th>Kirjailija</th>
+                <th>Kustantamo</th>
+                <th>Vuosi</th>
+                <th>Genre</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td><a href="{{base_path}}/book/{{book.id}}">{{book.book_name}}</a></td>
+                <td>{{book.writer}}</td>
+                <td>{{book.publisher}}</td>
+                <td>{{book.published}}</td>
+                <td>{{book.genre}}</td>
+                <td>
+                    {% if game.status %}
+                    <label class="label label-success">Luettu
+                    {% else %}
+                        <label class="label label-danger"Lukematon
+                    {% endif %}
+                </td>
+                <td><a class="btn btn-default btn-sm" href="{{base_path}}/book/{{book.id}}/edit">Muokkaa</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

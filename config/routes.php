@@ -1,16 +1,27 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
-});
-
-$routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
+    BookController::index();
 });
 
 $routes->get('/book', function() {
-    HelloWorldController::book_list();
+    BookController::index();
 });
+
+$routes->post('/book', function() {
+    BookController::store();
+});
+
+$routes->get('/book/new', function() {
+   BookController::new_book();
+});
+
+$routes->get('/book/:id', function($id) {
+    BookController::show($id);
+});
+
+
+
 
 $routes->get('/book/info', function() {
     HelloWorldController::book_info();
@@ -26,4 +37,8 @@ $routes->get('/login', function() {
 
 $routes->get('/register', function() {
     HelloWorldController::register();
+});
+
+$routes->get('/hiekkalaatikko', function() {
+    HelloWorldController::sandbox();
 });

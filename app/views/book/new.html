@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Lisää uusi kirja</h1>
+
+    <form method="post" action="{{base_path}}/book">
+        <div class="form-group">
+            <label>Nimi</label>
+            <input name="book_name" class="form-control" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Kirjoittaja</label>
+            <input name="writer" class="form-control" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Kustantaja</label>
+            <input name="publisher" class="form-control" type="text">
+        </div>
+
+        <div class="form-group">
+            <label>Julkaisuvuosi</label>
+            <input name="published" class="form-control" type="number">
+        </div>
+
+        <div class="form-group">
+            <label>Genre</label>
+            <select name="genre">
+                <option value="kauhu">Kauhu</option>
+                <option value="dekkari">Dekkari</option>
+                <option value="romantiikka">Romantiikka</option>
+                <option value="fantasia">Fantasia</option>
+                <option value="sci-fi">Sci-fi</option>
+                <option value="historia">Historia</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <form action="status">
+                <input type="checkbox" name="luettu">Luettu <br>
+                <input type="checkbox" name="lukematon">Lukematon
+            </form>
+
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Lisää kirja</button>
+        </div>
+    </form>
+
+{% endblock %}
