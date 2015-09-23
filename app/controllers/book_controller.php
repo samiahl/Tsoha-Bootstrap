@@ -33,6 +33,8 @@ class BookController extends BaseController{
         ));
         $book->save();
 
-        Redirect::to('/book' . $book->id, array('message' => 'Kirja on lisätty valikoimaasi.'));
+       // Kint::dump($params);
+
+        Redirect::to('/book/' . $book->id, array('message' => 'Kirja on lisätty valikoimaasi.'));
     }
 }
