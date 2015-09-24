@@ -26,20 +26,7 @@
     }
 
 
-    public function save(){
-        $query = DB::connection()->prepare('INSERT INTO Game (book_name, writer, publisher, published, genre, status)
-                                            VALUES (:book_name, :writer, :publisher, :published, :genre, :status) RETURNING id');
 
-        $query->execute(array('book_name' => $this->book_name,
-                                'writer' => $this->writer,
-                                'publisher' => $this->publisher,
-                                'published' => $this->published,
-                                'genre' => $this->genre,
-                                'status' => $this->status));
-        $row = $query->fetch();
-        $this->id = $row['id'];
-
-    }
 
 
   }
