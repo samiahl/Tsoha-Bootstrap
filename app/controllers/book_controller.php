@@ -24,12 +24,12 @@ class BookController extends BaseController{
     public static function store(){
         $params = $_POST;
         $book = new Book(array(
-            'book_name' => $params['name'],
+            'book_name' => $params['book_name'],
             'writer' => $params['writer'],
             'publisher' => $params['publisher'],
-            'published' => $params['year'],
-            'genre' => $params['genre'],
-            'status' => $params['status']
+            'published' => $params['published'],
+            'genre' => $params['genre']
+
         ));
         $book->save();
 

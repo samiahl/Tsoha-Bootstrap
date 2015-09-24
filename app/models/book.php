@@ -7,7 +7,7 @@
  */
 class Book extends BaseModel{
 
-    public $book_name, $writer, $publisher, $published, $genre, $status;
+    public $book_name, $writer, $publisher, $published, $genre;
 
     public function __construct($attributes){
         parent::__construct($attributes);
@@ -26,8 +26,7 @@ class Book extends BaseModel{
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
                 'published' => $row['published'],
-                'genre' => $row['genre'],
-                'status' => $row['status']
+                'genre' => $row['genre']
             ));
         }
         return $books;
@@ -44,8 +43,8 @@ class Book extends BaseModel{
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
                 'published' => $row['published'],
-                'genre' => $row['genre'],
-                'status' => $row['status']
+                'genre' => $row['genre']
+
             ));
             return $book;
         }
@@ -53,16 +52,17 @@ class Book extends BaseModel{
     }
 
     public function save(){
-        $query = DB::connection()->prepare('INSERT INTO Game (book_name, writer, publisher, published, genre, status)
-                                            VALUES (:book_name, :writer, :publisher, :published, :genre, :status) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Book (book_name, writer, publisher, published, genre )
+                                            VALUES (:book_name, :writer, :publisher, :published, :genre ) RETURNING id');
 
         $query->execute(array(
             'book_name' => $this->book_name,
             'writer' => $this->writer,
             'publisher' => $this->publisher,
             'published' => $this->published,
-            'genre' => $this->genre,
-            'status' => $this->status));
+            'genre' => $this->genre
+        ));
+
         $row = $query->fetch();
         $this->id = $row['id'];
 

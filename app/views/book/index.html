@@ -15,7 +15,7 @@
                 <th>Kustantamo</th>
                 <th>Vuosi</th>
                 <th>Genre</th>
-                <th>Status</th>
+
             </tr>
         </thead>
 
@@ -27,13 +27,7 @@
                 <td>{{book.publisher}}</td>
                 <td>{{book.published}}</td>
                 <td>{{book.genre}}</td>
-                <td>
-                    {% if game.status %}
-                    <label class="label label-success">Luettu
-                    {% else %}
-                        <label class="label label-danger"Lukematon
-                    {% endif %}
-                </td>
+
                 <td><a class="btn btn-default btn-sm" href="{{base_path}}/book/{{book.id}}/edit">Muokkaa</a></td>
             </tr>
             {% endfor %}
