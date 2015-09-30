@@ -57,7 +57,7 @@ class BookController extends BaseController{
             // Kint::dump($params);
             Redirect::to('/book/' . $book->id, array('message' => 'Kirja on lisätty valikoimaasi.'));
         }else{
-            View::make('book/new.html', array('errors' => $v->errors(), 'message' => 'Syötteissä virheitä, kokeile uudestaan.'))
+            View::make('book/new.html', array('errors' => $v->errors(), 'message' => 'Syötteissä virheitä, kokeile uudestaan.'));
         }
     }
 }
