@@ -14,7 +14,13 @@ class BookController extends BaseController{
     }
 
     public static function show($id){
+        $book = Book::find($id);
+        View::make('book/show_book.html', array('book' => $book));
+    }
 
+    public static function edit($id){
+        $book = Book::find($id);
+        View::make('book/:id/edit_book.html', array('book' => $book));
     }
 
     public static function new_book(){
@@ -23,18 +29,35 @@ class BookController extends BaseController{
 
     public static function store(){
         $params = $_POST;
-        $book = new Book(array(
-            'book_name' => $params['book_name'],
-            'writer' => $params['writer'],
-            'publisher' => $params['publisher'],
-            'published' => $params['published'],
-            'genre' => $params['genre']
 
-        ));
-        $book->save();
+        $v = new Valitron\Validator($params);
+        $v->rule('required', 'book_name');
+        $v->rule('lengthBetween', 'book_name', 1, 50);
 
-       // Kint::dump($params);
+        $v->rule('required', 'writer');
+        $v->rule('lengthBetween', 'writer', 1, 50);
 
-        Redirect::to('/book/' . $book->id, array('message' => 'Kirja on lisätty valikoimaasi.'));
+        $v->rule('required', 'publisher');
+        $v->rule('lengthBetween', 'publisher', 1, 50);
+
+        $v->rule('numeric', 'published');
+        $v->rule('required', 'published');
+        $v->rule('lengthBetween', 'published', 1, 4);
+
+        if($v->validate()){
+            $book = new Book(array(
+                'book_name' => $params['book_name'],
+                'writer' => $params['writer'],
+                'publisher' => $params['publisher'],
+                'published' => $params['published'],
+                'genre' => $params['genre']
+
+            ));
+            $book->save();
+            // Kint::dump($params);
+            Redirect::to('/book/' . $book->id, array('message' => 'Kirja on lisätty valikoimaasi.'));
+        }else{
+            View::make('book/new.html', array('errors' => $v->errors(), 'message' => 'Syötteissä virheitä, kokeile uudestaan.'))
+        }
     }
 }

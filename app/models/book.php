@@ -5,12 +5,14 @@
  * Date: 17.9.2015
  * Time: 11:46
  */
+
 class Book extends BaseModel{
 
-    public $book_name, $writer, $publisher, $published, $genre;
+    public $book_name, $writer, $publisher, $published, $genre, $validators;
 
     public function __construct($attributes){
         parent::__construct($attributes);
+        $this->validators = array('validate_book_name', 'validate_writer', 'validate_publisher', 'validate_published');
     }
 
     public static function all(){
@@ -63,8 +65,10 @@ class Book extends BaseModel{
             'genre' => $this->genre
         ));
 
+
         $row = $query->fetch();
         $this->id = $row['id'];
 
     }
+
 }

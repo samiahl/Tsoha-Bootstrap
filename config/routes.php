@@ -20,6 +20,10 @@ $routes->get('/book/:id', function($id) {
     BookController::show($id);
 });
 
+$routes->post('/book/:id/edit', function($id) {
+    BookController::edit($id);
+});
+
 
 
 
