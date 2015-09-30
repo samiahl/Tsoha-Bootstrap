@@ -23,6 +23,43 @@ class BookController extends BaseController{
         View::make('book/:id/edit_book.html', array('book' => $book));
     }
 
+
+
+    public static function update($id){
+        $params = $_POST;
+
+        $v = new Valitron\Validator($params);
+        $v->rule('required', 'book_name');
+        $v->rule('lengthBetween', 'book_name', 1, 50);
+
+        $v->rule('required', 'writer');
+        $v->rule('lengthBetween', 'writer', 1, 50);
+
+        $v->rule('required', 'publisher');
+        $v->rule('lengthBetween', 'publisher', 1, 50);
+
+        $v->rule('numeric', 'published');
+        $v->rule('required', 'published');
+        $v->rule('lengthBetween', 'published', 1, 4);
+
+        $attributes = array(
+            'id' => $id,
+            'book_name' => $params['book_name'],
+            'writer' => $params['writer'],
+            'publisher' => $params['publisher'],
+            'published' => $params['published'],
+            'genre' => $params['genre']
+        );
+
+        if($v->validate()){
+            $book = new Book($attributes);
+            $book->update();
+            Redirect::to('/book/edit_book.html' . $book->id, array('message' => 'Kirjan tietoja on muokattu.'));
+        }
+    }
+
+
+
     public static function new_book(){
         View::make('book/new.html');
     }
@@ -59,5 +96,11 @@ class BookController extends BaseController{
         }else{
             View::make('book/new.html', array('errors' => $v->errors(), 'message' => 'Syötteissä virheitä, kokeile uudestaan.'));
         }
+    }
+
+    public static function destroy($id){
+        $book = new Book(array('id' => $id));
+        $book->destroy();
+        Redirect::to('/book', array('Kirja poistettu valikoimastasi.'));
     }
 }

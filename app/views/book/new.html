@@ -1,35 +1,46 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Lisää uusi kirja</h1>
+<h1>Lisää kirja valikoimaasi</h1>
+
+    {% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+                <li>{{error}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
 
     <form method="POST" action="{{base_path}}/book">
 
         <div class="form-group">
             <label>Nimi</label>
-            <input name="book_name" class="form-control" type="text">
+            <input name="book_name" class="form-control" value="{{book.book_name}}" type="text">
         </div>
 
         <div class="form-group">
             <label>Kirjailija</label>
-            <input name="writer" class="form-control" type="text">
+            <input name="writer" class="form-control" value="{{book.writer}}" type="text">
         </div>
 
         <div class="form-group">
             <label>Kustantaja</label>
-            <input name="publisher" class="form-control" type="text">
+            <input name="publisher" class="form-control" value="{{book.publisher}}" type="text">
         </div>
 
         <div class="form-group">
             <label>Julkaisuvuosi</label>
-            <input name="published" class="form-control" type="text">
+            <input name="published" class="form-control" value="{{book.published}}" type="text">
         </div>
 
         <div class="form-group">
             <label>Genre</label>
 
             <select name="genre" class="form-control">
-                <option value="">--</option>
+
+                <option value="{{book.genre}}">{{book.genre}}</option>
                 <option value="kauhu">Kauhu</option>
                 <option value="dekkari">Dekkari</option>
                 <option value="romantiikka">Romantiikka</option>
@@ -38,8 +49,6 @@
                 <option value="historia">Historia</option>
             </select>
         </div>
-
-
 
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Lisää kirja</button>

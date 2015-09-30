@@ -71,4 +71,27 @@ class Book extends BaseModel{
 
     }
 
+    public function destroy(){
+        $query = DB::connection()->prepare('DELETE FROM Book WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+        $query->fetch();
+    }
+
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE Book SET book_name = :book_name,
+                                                            writer = :writer,
+                                                            publisher = :publisher,
+                                                            published = :published,
+                                                            genre = :genre
+                                                            WHERE id = :id');
+        $query->execute(array(
+            'book_name' => $this->book_name,
+            'writer' => $this->writer,
+            'publisher' => $this->publisher,
+            'published' => $this->published,
+            'genre' => $this->genre,
+            'id' => $this->id
+        ));
+        $row = $query->fetch();
+    }
 }

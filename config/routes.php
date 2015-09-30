@@ -20,9 +20,18 @@ $routes->get('/book/:id', function($id) {
     BookController::show($id);
 });
 
-$routes->post('/book/:id/edit', function($id) {
+$routes->get('/book/:id/edit', function($id) {
     BookController::edit($id);
 });
+
+$routes->post('/book/:id/edit', function($id) {
+    BookController::update($id);
+});
+
+$routes->post('/book/:id/destroy', function($id) {
+    BookController::destroy($id);
+});
+
 
 
 
