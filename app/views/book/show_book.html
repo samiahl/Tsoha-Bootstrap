@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 
+{% import "macros/forms.html" as forms %}
+
     <h1>{{book.book_name}}</h1>
 
     <p>
-        <button class="btn btn-danger">Poista</button> <a href="{{base_path}}/book/{{book.id}}/edit_book" class="btn btn-default">Muokkaa</a>
+        {{forms.destroy_button("#{base.path}/book/#{book.id}/destroy")}}
+        <a href="{{base_path}}/book/{{book.id}}/edit_book" class="btn btn-default">Muokkaa</a>
     </p>
 
 
