@@ -2,8 +2,8 @@
 
 CREATE TABLE Reader (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL
+  reader_name VARCHAR(50) NOT NULL,
+  reader_password VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Book (

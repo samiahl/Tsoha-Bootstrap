@@ -32,9 +32,15 @@ $routes->post('/book/:id/destroy', function($id) {
     BookController::destroy($id);
 });
 
+$routes->get('/book/login', function(){
+    UserController::login();
+});
 
+$routes->post('/book/login', function() {
+    UserController::handle_login();
+});
 
-
+//------------------------------------------------------
 
 $routes->get('/book/info', function() {
     HelloWorldController::book_info();
@@ -44,9 +50,6 @@ $routes->get('/book/edit', function() {
     HelloWorldController::book_edit();
 });
 
-$routes->get('/login', function() {
-    HelloWorldController::login();
-});
 
 $routes->get('/register', function() {
     HelloWorldController::register();
