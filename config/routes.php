@@ -32,12 +32,12 @@ $routes->post('/book/:id/destroy', function($id) {
     BookController::destroy($id);
 });
 
-$routes->get('/book/login', function(){
-    UserController::login();
+$routes->get('/login', function(){
+    ReaderController::login();
 });
 
-$routes->post('/book/login', function() {
-    UserController::handle_login();
+$routes->post('/login', function() {
+    ReaderController::handle_login();
 });
 
 //------------------------------------------------------

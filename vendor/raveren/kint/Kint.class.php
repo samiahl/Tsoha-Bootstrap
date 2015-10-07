@@ -87,7 +87,7 @@ class Kint
 		foreach ( $trace as $step ) {
 			self::$traceCleanupCallback and $step = call_user_func( self::$traceCleanupCallback, $step );
 
-			# if the user defined trace cleanup function returns null, skip this line
+			# if the reader defined trace cleanup function returns null, skip this line
 			if ( $step === null ) {
 				continue;
 			}

@@ -862,7 +862,7 @@ class Validator
                     continue;
                 }
 
-                // Callback is user-specified or assumed method on class
+                // Callback is reader-specified or assumed method on class
                 if (isset(static::$_rules[$v['rule']])) {
                     $callback = static::$_rules[$v['rule']];
                 } else {

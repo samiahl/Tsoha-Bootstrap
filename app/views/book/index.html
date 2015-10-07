@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h1>Rian kirjasto</h1>
+    {% if reader_logged_in %}
+        <h1>Käyttäjän {{reader_logged_in.name}} kirjasto</h1>
+    {% endif %}
 
     <p>
         <a href="{{base_path}}/book/new" class="btn btn-success">Lisää kirja</a>

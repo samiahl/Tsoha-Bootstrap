@@ -2,8 +2,12 @@
 
   class BaseController{
 
-    public static function get_user_logged_in(){
-      // Toteuta kirjautuneen käyttäjän haku tähän
+    public static function get_reader_logged_in(){
+        if(isset($_SESSION['reader'])){
+            $reader_id = $_SESSION['reader'];
+            $reader = Reader::find($reader_id);
+            return $reader;
+        }
       return null;
     }
 

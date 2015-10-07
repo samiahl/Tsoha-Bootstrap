@@ -8,7 +8,7 @@
 
 class Book extends BaseModel{
 
-    public $book_name, $writer, $publisher, $published, $genre, $validators;
+    public $id, $book_name, $writer, $publisher, $published, $genre, $reader_id, $validators;
 
     public function __construct($attributes){
         parent::__construct($attributes);
@@ -16,14 +16,19 @@ class Book extends BaseModel{
     }
 
     public static function all(){
-        $query = DB::connection()->prepare('SELECT * FROM Book');
-        $query->execute();
+        $query = DB::connection()->prepare('SELECT Book.id, Book.book_name, Book.writer, Book.publisher, Book.published, Book.genre,Book.reader_id, Reader.reader_name
+                                            FROM Book
+                                            INNER JOIN Reader
+                                            ON Book.reader_id = Reader.id
+                                            ');
 
+        $query->execute();
         $rows = $query->fetchAll();
         $books = array();
 
         foreach($rows as $row){
             $books[] = new Book(array(
+                'id' => $row['id'],
                 'book_name' => $row['book_name'],
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
@@ -41,6 +46,7 @@ class Book extends BaseModel{
 
         if($row){
             $book = new Book(array(
+                'id' => $row['id'],
                 'book_name' => $row['book_name'],
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
@@ -58,6 +64,7 @@ class Book extends BaseModel{
                                             VALUES (:book_name, :writer, :publisher, :published, :genre ) RETURNING id');
 
         $query->execute(array(
+            //'id' => $this->id,
             'book_name' => $this->book_name,
             'writer' => $this->writer,
             'publisher' => $this->publisher,
@@ -85,12 +92,13 @@ class Book extends BaseModel{
                                                             genre = :genre
                                                             WHERE id = :id');
         $query->execute(array(
+            'id' => $this->id,
             'book_name' => $this->book_name,
             'writer' => $this->writer,
             'publisher' => $this->publisher,
             'published' => $this->published,
-            'genre' => $this->genre,
-            'id' => $this->id
+            'genre' => $this->genre
+
         ));
         $row = $query->fetch();
     }

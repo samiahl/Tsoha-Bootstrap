@@ -925,19 +925,19 @@ class RequestTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test get user agent string
+     * Test get reader agent string
      */
     public function testGetUserAgent()
     {
         $env = \Slim\Environment::mock(array(
-            'HTTP_USER_AGENT' => 'user-agent-string'
+            'HTTP_USER_AGENT' => 'reader-agent-string'
         ));
         $req = new \Slim\Http\Request($env);
-        $this->assertEquals('user-agent-string', $req->getUserAgent());
+        $this->assertEquals('reader-agent-string', $req->getUserAgent());
     }
 
     /**
-     * Test get user agent string when not set
+     * Test get reader agent string when not set
      */
     public function testGetUserAgentWhenNotExists()
     {

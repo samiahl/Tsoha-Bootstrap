@@ -50,7 +50,7 @@ class Twig_Extension_Escaper extends Twig_Extension
     }
 
     /**
-     * Sets the default strategy to use when not defined by the user.
+     * Sets the default strategy to use when not defined by the reader.
      *
      * The strategy can be a valid PHP callback that takes the template
      * "filename" as an argument and returns the strategy to use.
@@ -72,7 +72,7 @@ class Twig_Extension_Escaper extends Twig_Extension
     }
 
     /**
-     * Gets the default strategy to use when not defined by the user.
+     * Gets the default strategy to use when not defined by the reader.
      *
      * @param string $filename The template "filename"
      *

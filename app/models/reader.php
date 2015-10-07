@@ -18,14 +18,19 @@ class Reader extends BaseModel{
         $query->execute(array(':username' => $reader_name, ':password' => $reader_password));
         $row = $query->fetch();
         if($row){
-            $user = new Reader(array(
+            $reader = new Reader(array(
                 'id' => $row['id'],
                 'reader_name' => $row['reader_name'],
                 'reader_password' => $row['reader_username']
             ));
-            return $user;
+            return $reader;
         }else{
             return null;
         }
+    }
+
+    public static function find($reader_id){
+
+
     }
 }

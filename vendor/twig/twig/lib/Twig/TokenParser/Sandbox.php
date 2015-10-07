@@ -14,7 +14,7 @@
  *
  * <pre>
  * {% sandbox %}
- *     {% include 'user.html' %}
+ *     {% include 'reader.html' %}
  * {% endsandbox %}
  * </pre>
  *

@@ -10,6 +10,7 @@ class BookController extends BaseController{
 
     public static function index(){
         $books = Book::all();
+        Kint::dump($books);
         View::make('book/index.html', array('books' => $books));
     }
 
@@ -20,7 +21,7 @@ class BookController extends BaseController{
 
     public static function edit($id){
         $book = Book::find($id);
-        View::make('book/:id/edit_book.html', array('book' => $book));
+        View::make('book/edit_book.html', array('book' => $book));
     }
 
 
@@ -54,7 +55,7 @@ class BookController extends BaseController{
         if($v->validate()){
             $book = new Book($attributes);
             $book->update();
-            Redirect::to('/book/edit_book.html' . $book->id, array('message' => 'Kirjan tietoja on muokattu.'));
+            Redirect::to('/book/' . $book->id, array('message' => 'Kirjan tietoja on muokattu.'));
         }
     }
 
@@ -83,6 +84,7 @@ class BookController extends BaseController{
 
         if($v->validate()){
             $book = new Book(array(
+                //'id' => $params['id'],
                 'book_name' => $params['book_name'],
                 'writer' => $params['writer'],
                 'publisher' => $params['publisher'],
@@ -91,7 +93,7 @@ class BookController extends BaseController{
 
             ));
             $book->save();
-            // Kint::dump($params);
+            Kint::dump($params);
             Redirect::to('/book/' . $book->id, array('message' => 'Kirja on lisätty valikoimaasi.'));
         }else{
             View::make('book/new.html', array('errors' => $v->errors(), 'message' => 'Syötteissä virheitä, kokeile uudestaan.'));
