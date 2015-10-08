@@ -2,8 +2,12 @@
 {% block content %}
 
     {% if reader_logged_in %}
-        <h1>Käyttäjän {{reader_logged_in.name}} kirjasto</h1>
+        <h1>Käyttäjän {{reader_logged_in.reader_name}} kirjasto</h1>
     {% endif %}
+
+    <div class="alert alert-success">
+        {{message}}
+    </div>
 
     <p>
         <a href="{{base_path}}/book/new" class="btn btn-success">Lisää kirja</a>
@@ -17,6 +21,7 @@
                 <th>Kustantamo</th>
                 <th>Vuosi</th>
                 <th>Genre</th>
+                <th>Lukija-id</th>
 
             </tr>
         </thead>
@@ -29,6 +34,7 @@
                 <td>{{book.publisher}}</td>
                 <td>{{book.published}}</td>
                 <td>{{book.genre}}</td>
+                <td>{{book.reader_id}}</td>
 
                 <td><a class="btn btn-default btn-sm" href="{{base_path}}/book/{{book.id}}/edit">Muokkaa</a></td>
             </tr>

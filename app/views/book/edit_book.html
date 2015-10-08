@@ -3,6 +3,18 @@
 
     <h1>Muokkaa kirjaa {{book.book_name}}</h1>
 
+    {% if errors %}
+    <div class="alert alert-danger">
+        <ul>
+            {% for error in errors %}
+                {% for err in error %}
+                    <li>{{err}}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
     <form method="POST" action="{{base_path}}/book/{{book.id}}/edit">
 
         <div class="form-group">

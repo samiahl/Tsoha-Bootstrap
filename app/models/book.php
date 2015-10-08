@@ -8,19 +8,17 @@
 
 class Book extends BaseModel{
 
-    public $id, $book_name, $writer, $publisher, $published, $genre, $reader_id, $validators;
+    public $id, $book_name, $writer, $publisher, $published, $genre, $reader_id;
 
     public function __construct($attributes){
         parent::__construct($attributes);
-        $this->validators = array('validate_book_name', 'validate_writer', 'validate_publisher', 'validate_published');
     }
 
     public static function all(){
-        $query = DB::connection()->prepare('SELECT Book.id, Book.book_name, Book.writer, Book.publisher, Book.published, Book.genre,Book.reader_id, Reader.reader_name
+        $query = DB::connection()->prepare('SELECT Book.id, Book.book_name, Book.writer, Book.publisher, Book.published,
+                                            Book.genre
                                             FROM Book
-                                            INNER JOIN Reader
-                                            ON Book.reader_id = Reader.id
-                                            ');
+                                           ');
 
         $query->execute();
         $rows = $query->fetchAll();
@@ -51,7 +49,7 @@ class Book extends BaseModel{
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
                 'published' => $row['published'],
-                'genre' => $row['genre']
+                'genre' => $row['genre'],
 
             ));
             return $book;
@@ -60,22 +58,19 @@ class Book extends BaseModel{
     }
 
     public function save(){
-        $query = DB::connection()->prepare('INSERT INTO Book (book_name, writer, publisher, published, genre )
-                                            VALUES (:book_name, :writer, :publisher, :published, :genre ) RETURNING id');
+        $query = DB::connection()->prepare('INSERT INTO Book (book_name, writer, publisher, published, genre, reader_id)
+                                            VALUES (:book_name, :writer, :publisher, :published, :genre, :reader_id) RETURNING id');
 
         $query->execute(array(
-            //'id' => $this->id,
             'book_name' => $this->book_name,
             'writer' => $this->writer,
             'publisher' => $this->publisher,
             'published' => $this->published,
-            'genre' => $this->genre
+            'genre' => $this->genre,
+            'reader_id' => $this->reader_id
         ));
-
-
         $row = $query->fetch();
         $this->id = $row['id'];
-
     }
 
     public function destroy(){
@@ -101,5 +96,12 @@ class Book extends BaseModel{
 
         ));
         $row = $query->fetch();
+    }
+
+    public function getNumberOfBooksByReader($id){
+        $query = DB::connection()->prepare('SELECT COUNT(Book.id) FROM Book
+                                            WHERE reader_id = :id');
+        $query->execute(array('id' => $id));
+        return $query->fetch();
     }
 }

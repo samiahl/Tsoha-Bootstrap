@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h1>{{reader.reader_name}}</h1>
+
+    <form method="get" action="{{base_path}}/reader/{{reader.id}}">
+        <button type="submit" class="btn btn-default">Muokkaa</button>
+    </form>
+
+    <ul>
+        <li><strong>Käyttäjän nimimerkki: </strong> {{reader.reader_name}} </li>
+        <li><strong>Käyttäjän kirjojen määrä: </strong> työn alla </li>
+    </ul>
+
+{% endblock %}
