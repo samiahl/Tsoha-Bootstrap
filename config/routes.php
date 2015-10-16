@@ -70,8 +70,8 @@ $routes->get('/reader/:id', function($id){
     ReaderController::show($id);
 });
 
-$routes->get('/reader', function(){
-    ReaderController::all();
+$routes->get('/reader','check_logged_in', function(){
+    ReaderController::reader_index();
 });
 
 

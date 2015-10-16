@@ -20,7 +20,7 @@ class Reader extends BaseModel{
         $readers = array();
 
         foreach ($rows as $row){
-            $readers = new Reader(array(
+            $readers[] = new Reader(array(
                 'id' => $row['id'],
                 'reader_name' => $row['reader_name'],
                 'reader_password' => $row['reader_password']
@@ -52,7 +52,7 @@ class Reader extends BaseModel{
 
         if($row){
             $reader = new Reader(array(
-               'id' => $row['id'],
+                'id' => $row['id'],
                 'reader_name' => $row['reader_name'],
                 'reader_password' => $row['reader_password']
             ));

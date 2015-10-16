@@ -8,6 +8,12 @@
 
 class ReaderController extends BaseController{
 
+    public static function reader_index(){
+        $readers = Reader::all();
+        Kint::dump($readers);
+        View::make('reader/all_readers.html', array('readers' => $readers));
+    }
+
     public static function show($id){
         $reader = Reader::find($id);
         //$bookCount = Book::getNumberOfBooksByReader($id);
@@ -67,12 +73,6 @@ class ReaderController extends BaseController{
         }else{
             View::make('reader/new_reader.html', array('errors' => $v->errors(), 'message' => 'Annetuissa tiedoissa virheitä tai puutteita.'));
         }
-    }
-
-    public static function all(){
-        self::check_logged_in();
-        $readers = Reader::all();
-        View::make('reader/all_readers.html', array('reader' => $readers));
     }
 
     public static function update_user($id){
