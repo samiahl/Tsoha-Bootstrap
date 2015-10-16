@@ -84,12 +84,12 @@ class BookController extends BaseController{
 
         if($v->validate()){
             $book = new Book(array(
-                //'id' => $params['id'],
                 'book_name' => $params['book_name'],
                 'writer' => $params['writer'],
                 'publisher' => $params['publisher'],
                 'published' => $params['published'],
-                'genre' => $params['genre']
+                'genre' => $params['genre'],
+                'reader_id' => $_SESSION['user']
 
             ));
             $book->save();

@@ -16,7 +16,7 @@ class Book extends BaseModel{
 
     public static function all(){
         $query = DB::connection()->prepare('SELECT Book.id, Book.book_name, Book.writer, Book.publisher, Book.published,
-                                            Book.genre
+                                            Book.genre, Book.reader_id
                                             FROM Book
                                            ');
 
@@ -31,7 +31,8 @@ class Book extends BaseModel{
                 'writer' => $row['writer'],
                 'publisher' => $row['publisher'],
                 'published' => $row['published'],
-                'genre' => $row['genre']
+                'genre' => $row['genre'],
+                'reader_id' => $row['reader_id']
             ));
         }
         return $books;
