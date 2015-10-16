@@ -25,7 +25,7 @@ class ReaderController extends BaseController{
     }
 
     public static function logout(){
-        $_SESSION['reader'] = null;
+        $_SESSION['user'] = null;
         Redirect::to('/login', array('message' => 'Olet kirjautunut ulos!'));
     }
 
@@ -36,7 +36,7 @@ class ReaderController extends BaseController{
         if(!$reader){
             View::make('reader/new_reader.html', array('error' => 'Väärä käyttäjätunnus tai salasana.', 'reader_name' => $params['username']));
         }else{
-            $_SESSION['reader'] = $reader->id;
+            $_SESSION['user'] = $reader->id;
            // Kint::dump($params);
             Redirect::to('/', array('message' => 'Tervetuloa takaisin ' . $reader->reader_name . '!'));
         }
@@ -70,9 +70,39 @@ class ReaderController extends BaseController{
     }
 
     public static function all(){
+        self::check_logged_in();
+        $readers = Reader::all();
+        View::make('reader/all_readers.html', array('reader' => $readers));
+    }
+
+    public static function update_user($id){
+        $params = $_POST;
+
+        $v = new Valitron\Validator($params);
+        $v->rule('required', 'reader_name');
+        $v->rule('lengthMin', 'reader_name', 3);
+        $v->rule('lengthMax', 'reader_name', 15);
+        $v->rule('required', 'reader_password');
+        $v->rule('lengthMin', 'reader_password', 4);
+        $v->rule('lengthMax', 'reader_password',15);
+
+        $attributes = array(
+            'id' => $id,
+            'reader_name' => $params['reader_name'],
+            'reader_password' => $params['reader_password']
+        );
+
+        if($v->validate()){
+            $reader = new Reader($attributes);
+            $reader->update();
+            Redirect::to('/reader/' . $reader->id, array('message' => 'Tietojasi on muokattu onnistuneesti.'));
+        }
 
     }
 
-
+    public static function edit_user($id){
+        $reader = Reader::find($id);
+        View::make('reader/edit_reader.html', array('reader' => $reader));
+    }
 
 }

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1> Muokkaa tietojasi </h1>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+        {% for err in error %}
+        <li>{{err}}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post" action="{{base_path}}/reader/{{reader.id}}/edit">
+    <div class="form-group">
+        <label>Käyttäjätunnus</label>
+        <input type="text" name="reader_name" class="form-control" value="{{reader.reader_name}}">
+    </div>
+
+    <div>
+        <label>Salasana</label>
+        <input type="password" name="reader_password" class="form-control">
+    </div>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Päivitä</button>
+</form>
+{% endblock %}

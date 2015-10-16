@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Käyttäjänimi</th>
+                <th>Kirjojen määrä</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for reader in readers %}
+            <tr>
+                <td><a href="{{base_path}}/reader/{{reader.id}}">reader.id</a></td>
+                <td>{{reader.reader_name}}</td>
+                <td>Työn alla</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

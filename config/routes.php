@@ -54,8 +54,24 @@ $routes->get('/register', function(){
     ReaderController::new_user();
 });
 
+$routes->get('/reader/:id/edit', function($id){
+    ReaderController::edit_user($id);
+});
+
+$routes->post('/reader/:id/edit', function($id) {
+   ReaderController::update_user($id);
+});
+
 $routes->post('/register', function(){
     ReaderController::save();
+});
+
+$routes->get('/reader/:id', function($id){
+    ReaderController::show($id);
+});
+
+$routes->get('/reader', function(){
+    ReaderController::all();
 });
 
 

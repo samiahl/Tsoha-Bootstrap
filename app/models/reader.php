@@ -69,4 +69,16 @@ class Reader extends BaseModel{
         $row = $query->fetch();
         $this->id = $row['id'];
     }
+
+    public function update(){
+        $query = DB::connection()->prepare('UPDATE Reader SET reader_name = :reader_name,
+                                                              reader_password = :reader_password
+                                                              WHERE id = :id');
+        $query->execute(array(
+            'id' => $this->id,
+            'reader_name' => $this->reader_name,
+            'reader_password' => $this->reader_password
+        ));
+        $row = $query->fetch();
+    }
 }

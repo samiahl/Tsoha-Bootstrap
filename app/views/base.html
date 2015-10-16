@@ -7,7 +7,7 @@
 
     <title>
       {% block title %}
-        Tietokantasovellus
+        MyBookDB - Kirjastotietokanta
       {% endblock %}
     </title>
 
@@ -39,22 +39,28 @@
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
             <!-- Navigaation linkit -->
-            <li><a href="{{base_path}}">Kirjat</a></li>
-          </ul>
 
-
-
-          <ul class="nav navbar-nav navbar-right">
-              <li><a href="{{base_path}}/logout">Kirjaudu ulos</a></li>
-              <li><a href="{{base_path}}/login">Kirjaudu sisään</a></li>
+              {% if user_logged_in %}
+                <li><a href="{{base_path}}/reader/{{user_logged_in.id}}"> {{user_logged_in.reader_name}}</a></li>
+                <li><a href="{{base_path}}/reader">Käyttäjät</a></li>
+                <li><a href="{{base_path}}/logout" >Kirjaudu ulos</a></li>
+              {% else %}
+                <li><a href="{{base_path}}/login">Kirjaudu sissään</a></li>
+              {% endif %}
           </ul>
         </div>
       </div>
     </nav>
 
     <div id="main-container">
-      <!-- Dynaaminen sisältö tulee tähän -->
-      {% block content %}{% endblock %}
+        <!-- Dynaaminen sisältö tulee tähän -->
+        {% if message %}
+        <div class="alert alert-success">
+            {{message}}
+        </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
     </div>
 
     {% block body %}
