@@ -10,8 +10,10 @@ class ReaderController extends BaseController{
 
     public static function reader_index(){
         $readers = Reader::all();
+
+
         Kint::dump($readers);
-        View::make('reader/all_readers.html', array('readers' => $readers));
+        View::make('reader/all_readers.html', array('readers' => $readers, 'bookCount' => 'työn alla'));
     }
 
     public static function show($id){
