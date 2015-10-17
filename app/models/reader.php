@@ -81,4 +81,5 @@ class Reader extends BaseModel{
         ));
         $row = $query->fetch();
     }
+
 }

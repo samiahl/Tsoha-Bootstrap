@@ -40,6 +40,7 @@ class BookController extends BaseController{
         $v->rule('lengthBetween', 'publisher', 1, 50);
 
         $v->rule('numeric', 'published');
+
         $v->rule('required', 'published');
         $v->rule('lengthBetween', 'published', 1, 4);
 

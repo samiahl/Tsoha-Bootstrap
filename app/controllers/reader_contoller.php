@@ -105,4 +105,5 @@ class ReaderController extends BaseController{
         View::make('reader/edit_reader.html', array('reader' => $reader));
     }
 
+
 }

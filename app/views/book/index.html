@@ -34,6 +34,13 @@
                 <td>{{book.reader_id}}</td>
 
                 <td><a class="btn btn-default btn-sm" href="{{base_path}}/book/{{book.id}}/edit">Muokkaa</a></td>
+                <td>
+                    <form method="post" action="{{base_path}}/book/{{book.id}}/destroy">
+                        <button type="submit" class="btn btn-danger">Poista</button>
+                    </form>
+                </td>
+                
+
             </tr>
             {% endfor %}
         </tbody>
