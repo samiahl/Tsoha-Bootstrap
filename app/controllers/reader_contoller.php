@@ -16,10 +16,9 @@ class ReaderController extends BaseController{
 
     public static function show($id){
         $reader = Reader::find($id);
-        //$bookCount = Book::getNumberOfBooksByReader($id);
-        View::make('reader/show_reader.html', array('reader' => $reader
-        //, 'bookCount' => $bookCount
-        ));
+        $bookCount = Book::getNumberOfBooksByReader($id);
+        Kint::dump($bookCount);
+        View::make('reader/show_reader.html', array('reader' => $reader, 'bookCount' => $bookCount));
     }
 
     public static function login(){
